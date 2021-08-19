@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zenseless.Resources", "src\Zenseless.Resources.csproj", "{B8A22140-AF83-48AA-B804-684DBAD18CA0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zenseless.Resources.Tests", "Tests\Zenseless.Resources.Tests.csproj", "{DBFD2D3C-717D-4414-94FA-2F8613DF4D47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{061F930A-62DF-40A7-9FEB-70F75AC1D444}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		CHANGELOG.md = CHANGELOG.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		ISSUE_TEMPLATE.md = ISSUE_TEMPLATE.md
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8A22140-AF83-48AA-B804-684DBAD18CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A22140-AF83-48AA-B804-684DBAD18CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A22140-AF83-48AA-B804-684DBAD18CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A22140-AF83-48AA-B804-684DBAD18CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFD2D3C-717D-4414-94FA-2F8613DF4D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFD2D3C-717D-4414-94FA-2F8613DF4D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFD2D3C-717D-4414-94FA-2F8613DF4D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFD2D3C-717D-4414-94FA-2F8613DF4D47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {275214B9-C56A-436D-BC5F-9D58AC8B5F19}
+	EndGlobalSection
+EndGlobal
