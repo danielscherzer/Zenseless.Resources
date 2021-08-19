@@ -51,7 +51,7 @@ namespace Zenseless.Resources
 		/// <returns></returns>
 		public IResource Resource(string name)
 		{
-			if(!Exists(name)) throw new ArgumentOutOfRangeException($"Could not find resource '{name}' in resource directory '{RootDirectory}'");
+			if (!Exists(name)) throw new ArgumentException($"Could not find resource '{name}' in resource directory '{RootDirectory}'");
 			return new Resource(this, name);
 		}
 

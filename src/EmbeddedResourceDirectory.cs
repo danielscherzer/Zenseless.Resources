@@ -48,7 +48,7 @@ namespace Zenseless.Resources
 			if (stream is null)
 			{
 				var names = string.Join('\n', _names);
-				throw new ArgumentOutOfRangeException($"Could not find resource '{name}' in resources\n'{names}'");
+				throw new ArgumentException($"Could not find resource '{name}' in resources\n'{names}'");
 			}
 			return stream;
 		}
@@ -63,7 +63,7 @@ namespace Zenseless.Resources
 			if (!Exists(name))
 			{
 				var names = string.Join('\n', _names);
-				throw new ArgumentOutOfRangeException($"Could not find resource '{name}' in resources\n'{names}'");
+				throw new ArgumentException($"Could not find resource '{name}' in resources\n'{names}'");
 			}
 			return new Resource(this, name);
 		}

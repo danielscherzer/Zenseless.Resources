@@ -1,8 +1,7 @@
-﻿using Zenseless.Resources;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace Zenseless.Resources.Tests
 {
@@ -39,6 +38,7 @@ namespace Zenseless.Resources.Tests
 			using var t = new StreamReader(stream);
 			var text = t.ReadToEnd();
 			Assert.AreEqual("0123456789", text);
+			Assert.ThrowsException<ArgumentException>(() => dir.Open("dataTest.txt"));
 		}
 
 		[TestMethod()]
@@ -47,6 +47,7 @@ namespace Zenseless.Resources.Tests
 			EmbeddedResourceDirectory dir = new("Zenseless.Resources.Tests.Content");
 			var res = dir.Resource("Test.txt");
 			Assert.AreEqual("Test.txt", res.Name);
+			Assert.ThrowsException<ArgumentException>(() => dir.Resource("dataTest.txt"));
 		}
 
 		[TestMethod()]
