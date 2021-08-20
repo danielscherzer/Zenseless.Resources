@@ -28,7 +28,7 @@ namespace Zenseless.Resources
 		/// <returns>A list of resource names</returns>
 		public IEnumerable<string> EnumerateResources() => Directory
 			.EnumerateFiles(RootDirectory, "*.*", Recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly)
-			.Select(filePath => filePath[RootDirectory.Length..]);
+			.Select(filePath => filePath[(RootDirectory.Length + 1)..]);
 
 		/// <summary>
 		/// Checks if a resource of the given name exists
