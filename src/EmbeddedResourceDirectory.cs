@@ -21,7 +21,7 @@ namespace Zenseless.Resources
 			_path = path + ".";
 			var allNames = _assembly.GetManifestResourceNames();
 			_names = allNames.Where(n => n.StartsWith(_path)).Select(n => n[_path.Length..]).ToHashSet();
-			if (0 == _names.Count) throw new ArgumentException($"Given path '{path}' does not contain any resources");
+			if (0 == _names.Count) throw new ArgumentException($"Given path '{path}' does not contain any resources.\nAvailable resoures are {string.Join(',', allNames)}");
 		}
 
 		/// <summary>
