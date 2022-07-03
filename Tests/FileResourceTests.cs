@@ -52,7 +52,7 @@ namespace Zenseless.Resources.Tests
 			Assert.IsNotNull(dir);
 			var resDir = new FileResourceDirectory(dir);
 			var jsonName = resDir.EnumerateResources().Where(res => res.EndsWith(".json")).First();
-			var jsonText = resDir.Resource(jsonName).OpenText();
+			var jsonText = resDir.Resource(jsonName).AsString();
 			Assert.IsNotNull(jsonText);
 			Assert.IsTrue(jsonText.Contains(":"));
 		}

@@ -51,11 +51,22 @@ namespace Zenseless.Resources.Tests
 		}
 
 		[TestMethod()]
-		public void OpenTextTest()
+		public void AsStringTest()
 		{
 			EmbeddedResourceDirectory dir = new("Zenseless.Resources.Tests.Content");
 			var res = dir.Resource("Test.txt");
-			Assert.AreEqual("0123456789", res.OpenText());
+			Assert.AreEqual("0123456789", res.AsString());
+		}
+
+		[TestMethod()]
+		public void AsByteArrayTest()
+		{
+			EmbeddedResourceDirectory dir = new("Zenseless.Resources.Tests.Content");
+			var res = dir.Resource("Test.txt");
+			using var stream = res.Open();
+			var buffer = new byte[stream.Length];
+			stream.Read(buffer);
+			CollectionAssert.AreEqual(buffer, res.AsByteArray());
 		}
 	}
 }
