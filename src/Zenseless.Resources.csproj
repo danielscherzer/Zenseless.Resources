@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>bin/Zenseless.Resources.xml</DocumentationFile>
@@ -15,7 +15,7 @@
     <Description>Abstract resource (files and embedded resources) handling code.</Description>
     <Company>Daniel Scherzer</Company>
     <Authors>Daniel Scherzer</Authors>
-    <Copyright>Copyright © 2021 Daniel Scherzer</Copyright>
+    <Copyright>Copyright © 2021-2023 Daniel Scherzer</Copyright>
     <Version>0.1.0</Version>
     <RepositoryUrl>https://github.com/danielscherzer/Zenseless.Resources</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
