@@ -12,12 +12,21 @@ namespace Zenseless.Resources;
 public class EmbeddedResourceDirectory : IResourceDirectory
 {
 	/// <summary>
-	/// Create a new instance
+	/// Collects embedded resources of the calling assembly
 	/// </summary>
 	/// <param name="path">The path prefix to use for accessing embedded resources.</param>
-	public EmbeddedResourceDirectory(string path = "")
+	public EmbeddedResourceDirectory(string path = ""): this(Assembly.GetCallingAssembly(), path)
 	{
-		_assembly = Assembly.GetCallingAssembly();
+	}
+
+	/// <summary>
+	/// Collects embedded resources of given <see cref="Assembly"/>.
+	/// </summary>
+	/// <param name="assembly">The <see cref="Assembly"/> in which the resources are stored.</param>
+	/// <param name="path">The path prefix to use for accessing embedded resources.</param>
+	public EmbeddedResourceDirectory(Assembly assembly, string path = "")
+	{
+		_assembly = assembly;
 		var allNames = _assembly.GetManifestResourceNames();
 		_path = string.IsNullOrEmpty(path) ? path : path.TrimEnd('.') + ".";
 		_names = allNames.Where(n => n.StartsWith(_path)).Select(n => n[_path.Length..]).ToHashSet();

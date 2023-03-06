@@ -11,3 +11,7 @@ These are the changes to each version that has been released on the NuGet Galler
 ## 0.1
 - [x] Initial release
 
+## 0.2
+- [x] Added loading ofembedded resources from given assembly
+- [x] Added shortest resource name decorator (ShortestMatchResourceDirectory)
+
