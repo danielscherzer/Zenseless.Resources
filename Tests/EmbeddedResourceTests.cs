@@ -28,7 +28,7 @@ public class EmbeddedResourceTests
 	{
 		EmbeddedResourceDirectory dir = new("Zenseless.Resources.Tests.Content");
 		var res = dir.EnumerateResources();
-		Assert.AreEqual(1, res.Count());
+		Assert.AreEqual(2, res.Count());
 	}
 
 	[TestMethod()]

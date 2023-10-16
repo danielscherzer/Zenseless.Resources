@@ -52,16 +52,20 @@ public class ShortestMatchResourceDirectory : IResourceDirectory
 	/// </summary>
 	/// <param name="name">The name of the resource</param>
 	/// <returns></returns>
-	public Stream Open(string name)
-	{
-		IEnumerable<string> enumerable = Matches(name);
-		return ResourceDirectory.Open(enumerable.Single());
-	}
+	public Stream Open(string name) => ResourceDirectory.Open(ShortestMatch(name));
 
 	/// <summary>
 	/// Returns the resource with the given name if it exists, throws an exception otherwise
 	/// </summary>
 	/// <param name="name">The name of the resource</param>
 	/// <returns></returns>
-	public IResource Resource(string name) => ResourceDirectory.Resource(Matches(name).Single());
+	public IResource Resource(string name) => ResourceDirectory.Resource(ShortestMatch(name));
+
+	private string ShortestMatch(string name)
+	{
+		var matches = Matches(name);
+		if (!matches.Any()) throw new ArgumentException($"No matching resource for '{name}'");
+		var shortest = matches.Aggregate((s, best) => s.Length < best.Length ? s : best);
+		return shortest;
+	}
 }

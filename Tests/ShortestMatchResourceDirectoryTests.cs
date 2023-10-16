@@ -21,7 +21,7 @@ public class ShortestMatchResourceDirectoryTests
 	{
 		ShortestMatchResourceDirectory dir = new(new EmbeddedResourceDirectory());
 		var res = dir.EnumerateResources();
-		Assert.AreEqual(1, res.Count());
+		Assert.AreEqual(2, res.Count());
 	}
 
 	[TestMethod()]
@@ -36,8 +36,9 @@ public class ShortestMatchResourceDirectoryTests
 	public void MatchesTest()
 	{
 		ShortestMatchResourceDirectory dir = new(new EmbeddedResourceDirectory());
-		Assert.AreEqual(1, dir.Matches("test").Count());
-		Assert.AreEqual(1, dir.Matches("Test.txt").Count());
+		Assert.AreEqual(2, dir.Matches("test").Count());
+		Assert.AreEqual(2, dir.Matches("Test.txt").Count());
+		Assert.AreEqual(1, dir.Matches("testTest.txt").Count());
 		Assert.AreEqual(1, dir.Matches("content.test.txt").Count());
 	}
 
@@ -49,7 +50,7 @@ public class ShortestMatchResourceDirectoryTests
 		using var t = new StreamReader(stream);
 		var text = t.ReadToEnd();
 		Assert.AreEqual("0123456789", text);
-		Assert.ThrowsException<InvalidOperationException>(() => dir.Open("dataTest.txt"));
+		Assert.ThrowsException<ArgumentException>(() => dir.Open("dataTest.txt"));
 	}
 
 	[TestMethod()]
@@ -57,7 +58,7 @@ public class ShortestMatchResourceDirectoryTests
 	{
 		ShortestMatchResourceDirectory dir = new(new EmbeddedResourceDirectory());
 		var res = dir.Resource("Test.txt");
-		Assert.AreEqual(dir.Matches("Test.txt").Single(), res.Name);
-		Assert.ThrowsException<InvalidOperationException>(() => dir.Resource("dataTest.txt"));
+		Assert.IsTrue(dir.Matches("Test.txt").Contains(res.Name));
+		Assert.ThrowsException<ArgumentException>(() => dir.Resource("dataTest.txt"));
 	}
 }
