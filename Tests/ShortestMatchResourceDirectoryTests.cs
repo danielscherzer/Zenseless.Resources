@@ -50,7 +50,7 @@ public class ShortestMatchResourceDirectoryTests
 		using var t = new StreamReader(stream);
 		var text = t.ReadToEnd();
 		Assert.AreEqual("0123456789", text);
-		Assert.ThrowsException<ArgumentException>(() => dir.Open("dataTest.txt"));
+		Assert.ThrowsExactly<ArgumentException>(() => dir.Open("dataTest.txt"));
 	}
 
 	[TestMethod()]
@@ -59,6 +59,6 @@ public class ShortestMatchResourceDirectoryTests
 		ShortestMatchResourceDirectory dir = new(new EmbeddedResourceDirectory());
 		var res = dir.Resource("Test.txt");
 		Assert.IsTrue(dir.Matches("Test.txt").Contains(res.Name));
-		Assert.ThrowsException<ArgumentException>(() => dir.Resource("dataTest.txt"));
+		Assert.ThrowsExactly<ArgumentException>(() => dir.Resource("dataTest.txt"));
 	}
 }

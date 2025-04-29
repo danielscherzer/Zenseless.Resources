@@ -11,7 +11,7 @@ public class EmbeddedResourceTests
 	[TestMethod()]
 	public void CreateTest()
 	{
-		Assert.ThrowsException<ArgumentException>(() => new EmbeddedResourceDirectory("Content"));
+		Assert.ThrowsExactly<ArgumentException>(() => new EmbeddedResourceDirectory("Content"));
 	}
 
 	[TestMethod()]
@@ -47,7 +47,7 @@ public class EmbeddedResourceTests
 		using var t = new StreamReader(stream);
 		var text = t.ReadToEnd();
 		Assert.AreEqual("0123456789", text);
-		Assert.ThrowsException<ArgumentException>(() => dir.Open("dataTest.txt"));
+		Assert.ThrowsExactly<ArgumentException>(() => dir.Open("dataTest.txt"));
 	}
 
 	[TestMethod()]
@@ -56,7 +56,7 @@ public class EmbeddedResourceTests
 		EmbeddedResourceDirectory dir = new("Zenseless.Resources.Tests.Content");
 		var res = dir.Resource("Test.txt");
 		Assert.AreEqual("Test.txt", res.Name);
-		Assert.ThrowsException<ArgumentException>(() => dir.Resource("dataTest.txt"));
+		Assert.ThrowsExactly<ArgumentException>(() => dir.Resource("dataTest.txt"));
 	}
 
 	[TestMethod()]

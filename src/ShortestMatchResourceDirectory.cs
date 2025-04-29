@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Zenseless.Resources;
 
@@ -64,7 +65,11 @@ public class ShortestMatchResourceDirectory : IResourceDirectory
 	private string ShortestMatch(string name)
 	{
 		var matches = Matches(name);
-		if (!matches.Any()) throw new ArgumentException($"No matching resource for '{name}'");
+		if (!matches.Any())
+		{
+			var names = string.Join('\n', EnumerateResources());
+			throw new ArgumentException($"Could not find matching resource for '{name}' in resources\n'{names}'"); 
+		}
 		var shortest = matches.Aggregate((s, best) => s.Length < best.Length ? s : best);
 		return shortest;
 	}

@@ -12,8 +12,8 @@ public class FileResourceTests
 	[TestMethod()]
 	public void FileResourceDirectoryArgumentExceptionTest()
 	{
-		Assert.ThrowsException<ArgumentException>(() => new FileResourceDirectory(""));
-		Assert.ThrowsException<ArgumentException>(() => new FileResourceDirectory("asdfsdfxcvydsa"));
+		Assert.ThrowsExactly<ArgumentException>(() => new FileResourceDirectory(""));
+		Assert.ThrowsExactly<ArgumentException>(() => new FileResourceDirectory("asdfsdfxcvydsa"));
 	}
 
 	[TestMethod()]
@@ -54,6 +54,6 @@ public class FileResourceTests
 		var jsonName = resDir.EnumerateResources().Where(res => res.EndsWith(".json")).First();
 		var jsonText = resDir.Resource(jsonName).AsString();
 		Assert.IsNotNull(jsonText);
-		Assert.IsTrue(jsonText.Contains(":"));
+		Assert.IsTrue(jsonText.Contains(':'));
 	}
 }
